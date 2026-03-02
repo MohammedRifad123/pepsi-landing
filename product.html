@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Details</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;900&display=swap" rel="stylesheet">
+
+<style>
+
+/* ================= GLOBAL ================= */
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background: radial-gradient(circle at top right, #1a1a1a, #0f0f0f 60%);
+    color:#fff;
+    overflow-x:hidden;
+}
+
+/* Smooth page fade */
+body{
+    animation: fadeIn 0.8s ease forwards;
+}
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* ================= PRODUCT PAGE ================= */
+.product-page{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:120px 10%;
+}
+
+.product-container{
+    display:flex;
+    gap:100px;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+/* ================= IMAGE ================= */
+.product-image img{
+    width:380px;
+    border-radius:30px;
+    padding:20px;
+    background: rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    backdrop-filter:blur(15px);
+
+    box-shadow:
+        0 40px 100px rgba(0,0,0,0.95),
+        0 0 60px rgba(0,114,255,0.35);
+
+    transition:0.4s ease;
+}
+
+.product-image img:hover{
+    transform:scale(1.05);
+    box-shadow:
+        0 60px 140px rgba(0,0,0,1),
+        0 0 90px rgba(0,114,255,0.6);
+}
+
+/* ================= DETAILS ================= */
+.product-details{
+    max-width:520px;
+}
+
+.product-details h1{
+    font-size:46px;
+    font-weight:900;
+    margin-bottom:25px;
+
+    background: linear-gradient(90deg,#ff0000,#004cff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.product-details p{
+    line-height:1.9;
+    color:#bbb;
+    margin-bottom:25px;
+    font-size:16px;
+}
+
+.price{
+    font-size:28px;
+    font-weight:700;
+    margin-bottom:30px;
+    color:#0ef;
+}
+
+/* ================= PREMIUM BUTTON ================= */
+.buy-btn{
+    display:inline-block;
+    padding:16px 50px;
+    background:linear-gradient(135deg,#ff0000,#004cff);
+    border-radius:60px;
+    text-decoration:none;
+    color:#fff;
+    font-weight:700;
+    letter-spacing:1px;
+    transition:0.3s ease;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.8),
+        0 0 30px rgba(0,114,255,0.3);
+}
+
+.buy-btn:hover{
+    transform:translateY(-6px);
+    box-shadow:
+        0 30px 70px rgba(0,0,0,1),
+        0 0 60px rgba(0,114,255,0.6);
+}
+
+/* ================= EMPTY STATE ================= */
+.empty-state{
+    text-align:center;
+    max-width:600px;
+    padding:60px 40px;
+    border-radius:30px;
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(15px);
+    border:1px solid rgba(255,255,255,0.08);
+    box-shadow:
+        0 40px 100px rgba(0,0,0,0.9),
+        0 0 60px rgba(0,114,255,0.2);
+}
+
+.empty-state h1{
+    font-size:42px;
+    margin-bottom:20px;
+    background: linear-gradient(90deg,#ff0000,#004cff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.empty-state p{
+    color:#bbb;
+    margin-bottom:30px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:991px){
+
+    .product-container{
+        flex-direction:column;
+        text-align:center;
+        gap:60px;
+    }
+
+    .product-image img{
+        width:280px;
+    }
+
+    .product-details h1{
+        font-size:32px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<section class="product-page">
+
+    <div id="dynamic-content" class="product-container">
+
+        <div class="product-image">
+            <img id="product-image" src="" alt="">
+        </div>
+
+        <div class="product-details">
+            <h1 id="product-title"></h1>
+            <p id="product-description"></p>
+            <div class="price" id="product-price"></div>
+            <a href="#" class="buy-btn">BUY NOW</a>
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const product = params.get("product");
+
+const title = document.getElementById("product-title");
+const image = document.getElementById("product-image");
+const desc = document.getElementById("product-description");
+const price = document.getElementById("product-price");
+const container = document.getElementById("dynamic-content");
+
+if(product === "blue-pepsi"){
+    title.innerText = "Pepsi Blue Edition";
+    image.src = "image/1.png";
+    desc.innerText = "Pepsi Blue Edition delivers a bold citrus-infused refreshment experience with vibrant energy and iconic flavor.";
+    price.innerText = "$40";
+}
+
+else if(product === "red-pepsi"){
+    title.innerText = "Pepsi Classic Red";
+    image.src = "image/2.png";
+    desc.innerText = "Pepsi Classic Red offers the timeless cola taste with smooth carbonation and bold refreshment loved worldwide.";
+    price.innerText = "$40";
+}
+
+else if(product === "black-pepsi"){
+    title.innerText = "Pepsi Zero Sugar";
+    image.src = "image/3.png";
+    desc.innerText = "Pepsi Zero Sugar delivers maximum bold flavor with zero sugar, crafted for a modern and powerful refreshment experience.";
+    price.innerText = "$40";
+}
+
+else{
+    container.innerHTML = `
+        <div class="empty-state">
+            <h1>Pepsi Product</h1>
+            <p>Select a product from the home page to explore full specifications, pricing details, and exclusive refreshment experiences.</p>
+            <a href="index.html" class="buy-btn">VIEW PRODUCTS</a>
+        </div>
+    `;
+}
+</script>
+
+</body>
+</html>
