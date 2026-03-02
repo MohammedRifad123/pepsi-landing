@@ -22,21 +22,23 @@ function changeCan(image, color){
 
 const btn = document.querySelector(".btn");
 
-btn.addEventListener("click", function(e){
+if(btn){
+    btn.addEventListener("click", function(e){
 
-    const circle = document.createElement("span");
-    const rect = this.getBoundingClientRect();
+        const circle = document.createElement("span");
+        const rect = this.getBoundingClientRect();
 
-    circle.style.left = e.clientX - rect.left + "px";
-    circle.style.top = e.clientY - rect.top + "px";
+        circle.style.left = e.clientX - rect.left + "px";
+        circle.style.top = e.clientY - rect.top + "px";
 
-    this.appendChild(circle);
+        this.appendChild(circle);
 
-    setTimeout(() => {
-        circle.remove();
-    }, 600);
+        setTimeout(() => {
+            circle.remove();
+        }, 600);
 
-});
+    });
+}
 
 
 // ================= SMOOTH PAGE LOAD FADE =================
@@ -44,3 +46,14 @@ btn.addEventListener("click", function(e){
 window.addEventListener("load", () => {
     document.body.style.opacity = "1";
 });
+
+
+// ================= MOBILE NAV TOGGLE =================
+const header = document.querySelector("header");
+const menuToggle = document.querySelector(".menu-toggle");
+
+if(header && menuToggle){
+    menuToggle.addEventListener("click", () => {
+        header.classList.toggle("open");
+    });
+}

@@ -17,14 +17,19 @@
     <header>
         <img src="image/logo1.png" class="logo" alt="Pepsi Logo">
 
-       
-    <nav class="navbar">
-        <a href="index.html">Home</a>
-        <a href="product.html" class="active">Products</a>
-        <a href="#">What's New</a>
-        <a href="#">Newsletter</a>
-        <a href="#">Contact</a>
-    </nav>
+        <button class="menu-toggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="navbar">
+            <a href="index.html">Home</a>
+            <a href="product.html" class="active">Products</a>
+            <a href="#whatsnew">What's New</a>
+            <a href="#newsletter">Newsletter</a>
+            <a href="#contact">Contact</a>
+        </nav>
     </header>
 
     <!-- CONTENT -->
@@ -49,7 +54,7 @@
         </div>
 
         <div class="imgBox">
-            <img src="image/background.png" class="pepsi" alt="Pepsi Can">
+            <img src="image/background.png" class="pepsi" id="mainCan" alt="Pepsi Can">
         </div>
 
     </div>
@@ -85,5 +90,6 @@
 <section id="newsletter"></section>
 <section id="contact"></section>
 
+<script src="script.js"></script>
 </body>
 </html>
